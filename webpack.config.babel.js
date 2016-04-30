@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
@@ -9,8 +10,8 @@ let extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
 
 module.exports = {
 	entry: {
-		'DatePickerControl': './src/index.js',
-		'demo': './src/demo/index.js'
+		'DatePickerModal': './_src/DatePickerModal/index.js',
+		'demo': './_src/demo/index.js'
 	},
 
 	output: {
@@ -29,10 +30,12 @@ module.exports = {
 			'node_modules'
 		],
 		alias: {
-			components: `${__dirname}/src/components`,		// used for tests
-			style: `${__dirname}/src/style`,
+			//components: `${__dirname}/_src/components`,		// used for tests
+			//style: `${__dirname}/_src/style`,
 			'react': 'preact-compat',
-			'react-dom': 'preact-compat'
+			'react-dom': 'preact-compat',
+			'lib': `${__dirname}/_src/lib`,
+			'shared': `${__dirname}/_src/shared`
 		}
 	},
 
@@ -51,8 +54,8 @@ module.exports = {
 				loader: 'babel'
 			},
 			{
-				test: /\.(less|css)$/,
-				loader: extractCSS.extract('css?sourceMap!postcss!less?sourceMap')
+				test: /\.(sass|scss|css)$/,
+				loader: extractCSS.extract('css?sourceMap!postcss!sass?sourceMap')
 			},
 			{
 				test: /\.json$/,
@@ -69,6 +72,13 @@ module.exports = {
 		]
 	},
 
+  sassLoader: {
+    includePaths: [
+			path.resolve(__dirname, "./_src/shared/style"),
+			path.resolve(__dirname, "./node_modules")
+	  ]
+  },
+	
 	postcss: () => [
 		autoprefixer({ browsers: 'last 2 versions' })
 	],

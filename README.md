@@ -20,18 +20,18 @@ npm install -save md-datepicker
 Alternatively, you can clone the github repository, 
 `npm i && npm build` then use the output script under 
 `dist/` which if included directly in the browser will 
-be `DatePickerControl`.
+be `DatePickerModal`.
 
 ## Usage
 
 ```
-DatePickerControl.choose(options, callback);
+DatePickerModal.choose(options, callback);
 ```
 
 ### Options (object)
 
 ```
-DatePickerControl.choose({
+DatePickerModal.choose({
     
     // Incomming "Selected" Date
     value: Date or String, // Default: Current Date
@@ -48,7 +48,7 @@ DatePickerControl.choose({
 ### Callback (Node-style)
 
 ```
-DatePickerControl.choose(..., function(err, date) {
+DatePickerModal.choose(..., function(err, date) {
     
     // err will be an Error Object
     
