@@ -19,17 +19,27 @@ export default class App extends React.Component {
   raiseError(error) {
     this.props.raiseError(error);
   }
+  
+  @bind
+  cancel() {
+    this.props.resolveValue(this.props.value)
+  }
 
-  render({ style }) {
-    return <div className='dpm-outer' style={style.wrap.outer}>
-      <div className='dpm-inner' style={style.wrap.inner}>
-        <div className='dpm-inner2' style={style.wrap.inner2}>
+  render({ style, value }) {
+    return <div
+      className='dpm-outer'
+      style={ style.wrap.outer }
+    >
+      <div className='dpm-inner' style={style.wrap.inner} onclick={this.cancel}>
+        <div className='dpm-inner2' style={style.wrap.inner2} onclick={this.cancel}>
           <div className='dpm-choose' style={style.choose}>
             <button onclick={this.raiseError}>Error</button>
             <br />
             <button onclick={this.resolveValue}>Value</button>
             <br /><br />
-            <pre style="width:500px;height:200px;overflow:auto;">{JSON.stringify(this.props || 'TODO', null, 2)}</pre>
+            <pre style="width:500px;height:200px;overflow:auto;">{
+              JSON.stringify(this.props || 'TODO', null, 2)
+            }</pre>
           </div>
         </div>
       </div>
