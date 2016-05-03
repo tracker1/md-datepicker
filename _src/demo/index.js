@@ -15,9 +15,9 @@ function init() {
   document.body.innerHTML = content;
   document.getElementById('test1').addEventListener(
     'click',
-    () => DatePickerModal.date({},handleResult)
+    () => DatePickerModal.date({}, handleResult)
   );
 }
 
-//start with init...
+// start with init...
 document.addEventListener('DOMContentLoaded', init);

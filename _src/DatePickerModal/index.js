@@ -36,6 +36,7 @@ function bindStoreCallback(refs) {
       unsub();
       return cleanup(() => refs.callback(state.result));
     }
+    return null;
   });
 }
 
@@ -44,14 +45,14 @@ function renderComponent(refs) {
   return ReactDOM.render(
     <Provider store={refs.store}>
       <App />
-    </Provider>
-    ,refs.container
+    </Provider>,
+    refs.container
   );
 }
 
 
 function initialize(options, callback, type) {
-  const refs = { callback, instance:++instance };
+  const refs = { callback, instance: ++instance };
   try {
     refs.store = createStoreInstance(options, type);
     refs.container = createContainer(refs);

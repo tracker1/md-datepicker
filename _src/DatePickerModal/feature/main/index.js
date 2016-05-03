@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
   state => (state || {}),
   dispatch => bindActionCreators({
     resolveValue: () => ({ type: 'RESOLVE', payload: new Date() }),
-    raiseError: () => ({ type: 'ERROR', payload: new Error('Test') })
+    raiseError: () => ({ type: 'ERROR', payload: new Error('Test') }),
   }, dispatch)
 )
 export default class App extends React.Component {
