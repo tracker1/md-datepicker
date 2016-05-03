@@ -31,14 +31,14 @@ export default () => ({
   },
 
   // Initial Screen Details
-  screen: {
+  current: {
     /*
     Current Screen:
       choose-year, choose-month, choose-date, choose-time
 
     Null will be set based on initial type.
     */
-    current: null,
+    screen: null,
 
     // date parts, (int), defaults to current year, or min date, whichever is greater.
     year: null,
@@ -46,38 +46,5 @@ export default () => ({
     date: null,
     hour: null,
     minute: null,
-  },
-
-  // styles
-  style: {
-    wrap: {
-      outer: {
-        display: 'table',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        minWidth: '1vw',
-        minHeight: '1vh',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-      },
-      inner: {
-        display: 'table-cell',
-        top: 0,
-        left: 0,
-        width: '1vw',
-        height: '1vh',
-        overflow: 'auto',
-        align: 'center',
-        verticalAlign: 'middle',
-      },
-    },
-    choose: {
-      fontFamily: 'Roboto, "Helvetica Neue", sans-serif',
-      fontSize: '16px',
-      backgroundColor: '#fff',
-      boxShadow: '2px 2px 3px 3px rgba(0,0,0,0.4)',
-    },
   },
 });
