@@ -5,6 +5,15 @@ export default (state = EMPTY, action) => {
   switch (action.type) {
     case 'RESULT': return { ...state, result: action.payload || null };
     case 'ERROR': return { ...state, error: action.payload || null };
+    case 'SCREEN':
+      return {
+        ...state,
+        current: Object.assign(
+          {},
+          state.current,
+          { screen: action.payload },
+        ),
+      };
     default: return state;
   }
 };
