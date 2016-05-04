@@ -19,13 +19,13 @@ export default class App extends React.Component {
   raiseError(error) {
     this.props.raiseError(error);
   }
-  
+
   @bind
   cancel() {
-    this.props.resolveValue(this.props.value)
+    this.props.resolveValue(this.props.value);
   }
 
-  render({ style, value }) {
+  render({ style }) {
     return <div
       className='dpm-outer'
       style={ style.wrap.outer }
