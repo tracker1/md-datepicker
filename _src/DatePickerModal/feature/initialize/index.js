@@ -1,4 +1,4 @@
-import createStoreInstance from '../store';
+import createStoreInstance from '../../store';
 import createContainer from './create-container';
 import cleanup from './cleanup';
 import bindStoreCallback from './bind-store';

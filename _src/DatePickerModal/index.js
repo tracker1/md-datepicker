@@ -1,4 +1,4 @@
-import initialize from './initialize';
+import initialize from './feature/initialize';
 
 export const year = (options, callback) => initialize(options, callback, 'year');
 export const month = (options, callback) => initialize(options, callback, 'month');
