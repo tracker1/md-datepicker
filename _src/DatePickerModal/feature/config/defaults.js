@@ -3,8 +3,7 @@ export const min = new Date(1880, 0, 1, 0, 0, 0, 0);
 
 export function getMax() {
   const ret = new Date();
-  ret.setFullYear(ret.getFullYear() + 100);
-  return ret;
+  return new Date(ret.setFullYear(ret.getFullYear() + 101, 0, 1);
 }
 
 export default () => ({
