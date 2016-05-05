@@ -6,10 +6,10 @@ function getMonth(actions, year, month, name, min, max) {
   if (disabled) classes.push('disabled');
   else classes.push('active');
 
-  // don't show disabled months  
+  // don't show disabled months
   if (disabled) return null;
 
-  return <button 
+  return <button
     class={classes.join(' ')}
     disabled={disabled}
     onClick={event => {
@@ -26,10 +26,10 @@ export default function renderChooseMonth(props) {
   const rmin = new Date(min.getFullYear(), min.getMonth(), 1);
   const rmax = new Date(max.getFullYear(), max.getMonth(), 1);
   if (rmax.getDate < max.getDate()) rmax.setMonth(rmax.getMonth() + 1);
-  
+
   return <div className="choose-month" ariaLabel={`Choose month in ${current.year}`}>
-    <button 
-      class="header" 
+    <button
+      class="header"
       ariaLabel='Select another year.'
       onClick={event => {
         event.stopImmediatePropagation();
@@ -41,5 +41,5 @@ export default function renderChooseMonth(props) {
     <div class="picker">
       {l.month.map((m, i) => getMonth(actions, current.year, i, m, rmin, rmax))}
     </div>
-  </div>
+  </div>;
 }

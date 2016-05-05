@@ -4,11 +4,11 @@ export default function renderYearHeadings(props) {
     monthsToShow: months,
     current,
   } = config;
-  
+
   // all months same year
-  
+
   if (months < 2 || current.month < 13 - months) {
-    let cm = new Date(current.year, current.month, 1);;
+    const cm = new Date(current.year, current.month, 1);
     return <div className="year">
       <button
         className='full'
@@ -29,12 +29,12 @@ export default function renderYearHeadings(props) {
   let sy;
   while (ret.length < months) {
     m.setMonth(m.getMonth() + 1);
-    let cm = new Date(+m);
+    const cm = new Date(+m);
     sy = false;
     if (m.getMonth() === 0) sy = true;
     if (m.getMonth() === 11) sy = true;
     ret.push(
-      <button 
+      <button
         className='item'
         onClick={ event => {
           event.stopImmediatePropagation();

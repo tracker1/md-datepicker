@@ -44,7 +44,7 @@ export default function renderMonthHeadings(props) {
     let prev = null;
     let next = null;
 
-    if (i == 1) {
+    if (i === 1) {
       prev = hasPrev
         ? prevButton
         : <button
@@ -67,7 +67,7 @@ export default function renderMonthHeadings(props) {
             {'\u25b6'}
           </button>;
     }
- 
+
     ret.push(
       <div className='month'>
 

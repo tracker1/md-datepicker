@@ -1,11 +1,11 @@
 export function dateCell(config, actions, dtm, m, selected) {
   if (config.monthsToShow > 1 && dtm.getMonth() !== m.getMonth()) return '';
-  
+
   const classes = [];
   const checked = config.checkDate(new Date(+dtm));
-  
+
   if (+selected === +dtm) classes.push('selected');
-  
+
   if (typeof checked === 'string') classes.push(checked);
 
   const disabled = (
@@ -36,7 +36,7 @@ export function dateCell(config, actions, dtm, m, selected) {
 export default function renderMonth(props) {
   const { month, config, actions } = props;
   const { value, localize: l } = config;
-  const selected = !value ? null : new Date(value.getFullYear(), value.getMonth(), value.getDate()) 
+  const selected = !value ? null : new Date(value.getFullYear(), value.getMonth(), value.getDate());
 
   let rows = [];
   let stack = [];
