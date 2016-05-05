@@ -1,0 +1,46 @@
+
+.outer {
+  display: table;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 1vw;
+  min-height: 1vh;
+  background-color: rgba(0,0,0,0.5);
+  overflow: hidden;
+  
+  .inner {
+    display: table-cell;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+
+    .inner2 {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      max-height: 100%;
+      overflow: auto;
+      text-align: center;
+      
+      .choose {
+        display: inline-block;
+        position: relative;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        background-color: #fff;
+        text-align: left;
+        box-shadow: 2px 2px 4px 4px rgba(0,0,0,0.25);
+      }
+      
+    }
+    
+  }
+  
+  
+  
+}

@@ -15,25 +15,21 @@ export function getElement(screen, props) {
 }
 
 export function renderMain(props /* , context */) {
-  const { style, current } = props.config;
+  const { current } = props.config;
   const actions = props.actions;
   return <div
-    className='dpm-outer'
-    style={ style.wrap.outer }
+    className='outer'
   >
     <div
-      className='dpm-inner'
-      style={ style.wrap.inner }
+      className='inner'
       onClick={ actions.cancel }
     >
       <div
-        className='dpm-inner2'
-        style={ style.wrap.inner2 }
+        className='inner2'
         onClick={ () => true }
       >
         <div
-          className='dpm-choose'
-          style={ style.choose }
+          className='choose'
           onClick={ event => event.stopImmediatePropagation() }
         >
           {getElement(current.screen, props)}

@@ -1,0 +1,26 @@
+//includes variables and mixins
+$font-family-sans-serif: "Roboto", "Helvetica Neue", sans-serif;
+$brand-primary: #0288d1;
+
+@import "variables";
+@import "mixins";
+
+#DatePickerModal {
+
+  @import "bootstrap/scss/normalize";
+  @import "bootstrap/scss/reboot";
+  @import "bootstrap/scss/type";
+
+  @media print {
+    display: none !important;
+  }
+  
+  @import "../main/style.scss";
+  @import "../choose-year/style.scss";
+  @import "../choose-month/style.scss";
+  @import "../choose-date/style.scss";
+
+  button {
+    outline: none !important;
+  }
+}

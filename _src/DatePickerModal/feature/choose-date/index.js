@@ -3,16 +3,15 @@ import MonthHeadings from './month-headings';
 import Months from './months';
 
 export default function renderChooseDate(props /* , context */) {
-  const { actions, config } = props;
-  const { style: { chooseDate: style } } = config;
+  const { actions } = props;
 
-  return <div className="dpm-choose-date">
+  return <div className="choose-date">
     <div
-      style={ style.heading.wrap }
+      className='heading'
       onClick={ event => {
-        actions.changeScreen('choose-month');
         event.stopImmediatePropagation();
-      } }
+        actions.changeScreen('choose-month');
+      }}
     >
       <YearHeadings {...props} />
       <MonthHeadings {...props} />

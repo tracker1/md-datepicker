@@ -3,19 +3,20 @@ export default function renderYearHeadings(props) {
   const {
     chooseDate: { months },
     current,
-    style: { chooseDate: { heading: { year: style } } }
   } = config;
 
   // all months same year
   if (months < 2 || current.month < 10) {
-    return <div
-      style={ style.fullItem }
-      onClick={ event => {
-        actions.changeScreen('choose-month');
-        event.stopImmediatePropagation();
-      } }
-    >
-      {current.year}
+    return <div className="year">
+      <div
+        className='full'
+        onClick={ event => {
+          event.stopImmediatePropagation();
+          actions.changeScreen('choose-month');
+        }}
+      >
+        {current.year}
+      </div>
     </div>;
   }
 
@@ -29,17 +30,17 @@ export default function renderYearHeadings(props) {
     if (m.getMonth() === 0) sy = true;
     if (m.getMonth() === 11) sy = true;
     ret.push(
-      <div style={ style.item }>
+      <div className='item'>
         {sy ? m.getFullYear() : ''}
       </div>
     );
   }
   return <div
-    style={ style.wrap }
+    className='year'
     onClick={ event => {
-      actions.changeScreen('choose-month');
       event.stopImmediatePropagation();
-    } }
+      actions.changeScreen('choose-month');
+    }}
   >
     {ret}
   </div>;

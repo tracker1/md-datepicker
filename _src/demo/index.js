@@ -16,9 +16,8 @@ function init() {
   document.getElementById('test1').addEventListener(
     'click',
     () => DatePickerModal.date({
-      checkDate: (/* dtm */) => true, 
       chooseDate: { months: 3 },
-      min: new Date(2015, 9, 1),
+      min: new Date(2016, 9, 12),
       max: new Date(2018, 0, 1),
     }, handleResult)
   );

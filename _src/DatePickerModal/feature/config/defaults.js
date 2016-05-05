@@ -48,7 +48,7 @@ export default () => ({
       'November',
       'December',
     ],
-    day: [ 'S','M','T','W','T','F','S' ],
+    days: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   },
 
   // Initial Screen Details

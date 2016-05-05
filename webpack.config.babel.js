@@ -6,12 +6,13 @@ import autoprefixer from 'autoprefixer';
 
 const ENV = process.env.NODE_ENV || 'development';
 
-let extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
+let demoCSS = new ExtractTextPlugin('demo.css');
+let datepickerCSS = new ExtractTextPlugin('DatePickerModal.css');
 
 module.exports = {
   entry: {
-    'DatePickerModal': './_src/DatePickerModal/index.js',
-    'demo': './_src/demo/index.js'
+    DatePickerModal: './_src/DatePickerModal/index.js',
+    demo: './_src/demo/index.js'
   },
 
   output: {
@@ -30,12 +31,12 @@ module.exports = {
       'node_modules'
     ],
     alias: {
-      //components: `${__dirname}/_src/components`,    // used for tests
-      //style: `${__dirname}/_src/style`,
-      'react': 'preact-compat',
+      // components: `${__dirname}/_src/components`,    // used for tests
+      // style: `${__dirname}/_src/style`,
+      react: 'preact-compat',
       'react-dom': 'preact-compat',
-      'lib': `${__dirname}/_src/lib`,
-      'shared': `${__dirname}/_src/shared`
+      lib: `${__dirname}/_src/lib`,
+      shared: `${__dirname}/_src/shared`
     }
   },
 
@@ -54,8 +55,12 @@ module.exports = {
         loader: 'babel'
       },
       {
-        test: /\.(sass|scss|css)$/,
-        loader: extractCSS.extract('css?sourceMap!postcss!sass?sourceMap')
+        test: /DatePickerModal\/.+\.(sass|scss|css)$/,
+        loader: datepickerCSS.extract('css?sourceMap!postcss!sass?sourceMap')
+      },
+      {
+        test: /(demo|shared)\/.+\.(sass|scss|css)$/,
+        loader: demoCSS.extract('css?sourceMap!postcss!sass?sourceMap')
       },
       {
         test: /\.json$/,
@@ -84,7 +89,8 @@ module.exports = {
   ],
 
   plugins: ([
-    extractCSS,
+    demoCSS,
+    datepickerCSS,
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({

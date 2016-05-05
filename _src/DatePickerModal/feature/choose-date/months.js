@@ -11,7 +11,7 @@ export default function renderMonths(props) {
   const ret = [];
   while (ret.length < months) {
     m.setMonth(m.getMonth() + 1);
-    ret.push(<Month month={new Date(m)} {...props} />);
+    ret.push(<Month month={new Date(+m)} {...props} />);
   }
-  return <div>{ret}</div>;
+  return <div className="months">{ret}</div>;
 }

@@ -3,7 +3,6 @@ export default function renderMonthHeadings(props) {
   const { actions, config } = props;
   const {
     chooseDate: { months },
-    style: { chooseDate: { heading: { month: style } } },
     current,
     localize: l,
   } = config;
@@ -15,55 +14,80 @@ export default function renderMonthHeadings(props) {
   const hasNext = max > m;
 
   const ret = [];
+
+  const prevButton = <button
+    className='prev'
+    onClick={ event => {
+      event.stopImmediatePropagation();
+      actions.advanceCurrentMonth(-1);
+    }}
+    ariaLabel='Previous Month'
+  >
+    {'\u25c0'}
+  </button>;
+
+  const nextButton = <button
+    className='next'
+    onClick={ event => {
+      event.stopImmediatePropagation();
+      actions.advanceCurrentMonth(+1);
+    }}
+    ariaLabel='Next Month'
+  >
+    {'\u25b6'}
+  </button>;
+
   while (ret.length < months) {
     const i = ret.length + 1;
     m.setMonth(m.getMonth() + 1);
 
-    //if (i > 1) ret.push(<div style={ style.spacer }></div>);
+    let prev = null;
+    let next = null;
+
+    if (i == 1) {
+      prev = hasPrev
+        ? prevButton
+        : <button
+            className="prev disabled"
+            disabled="true"
+            onClick={ event => event.stopImmediatePropagation() }
+          >
+            {'\u25c0'}
+          </button>;
+    }
+
+    if (i === months) {
+      next = hasNext
+        ? nextButton
+        : <button
+            className="next disabled"
+            disabled="true"
+            onClick={ event => event.stopImmediatePropagation() }
+          >
+            {'\u25b6'}
+          </button>;
+    }
+ 
     ret.push(
-      <div style={ style.wrap }>
+      <div className='month'>
 
         <button
-          style={ style.text }
+          className='text'
           onClick={ event => {
-            actions.changeScreen('choose-month');
             event.stopImmediatePropagation();
+            actions.changeScreen('choose-month');
           }}
           ariaLabel='Change Month'
         >
           {l.month[m.getMonth()]}
         </button>
 
-        {
-          !hasPrev || i > 1 ? null // <div style={ style.prev }></div>
-          : <button
-              style={ style.prev }
-              onClick={ event => {
-                actions.advanceCurrentMonth(-1);
-                event.stopImmediatePropagation();
-              }}
-              ariaLabel='Previous Month'
-            >
-              {'\u25c0'}
-            </button>
-        }
+        {prev}
 
-        {
-          !hasNext || i < months ? null //<div style={ style.next }></div>
-          : <button
-              style={ style.next }
-              onClick={ event => {
-                actions.advanceCurrentMonth(+1);
-                event.stopImmediatePropagation();
-              }}
-              ariaLabel='Next Month'
-            >
-              {'\u25b6'}
-            </button>
-        }
+        {next}
 
       </div>
     );
   }
-  return <div>{ret}</div>;
+  return <div class="months">{ret}</div>;
 }

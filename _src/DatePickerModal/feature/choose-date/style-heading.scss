@@ -1,0 +1,82 @@
+.heading {
+  background-color: #0288d1;
+  color: #eee;
+  cursor: pointer;
+  white-space: nowrap;
+  
+  .year {
+    padding-top: 10px;
+    white-space: nowrap;
+    
+    .item, .full {
+      font-size: 28px;
+      text-align: center;  
+    }
+    
+    .item {
+      font-size: 28px;
+      display: inline-block;
+      position: relative;
+      width: 280px;
+    }
+  }
+  
+  .months {
+    white-space: no-wrap;
+    
+    .month {
+      display: inline-block;
+      position: relative;
+      width: 280px;
+      height: 2.4em;
+      
+      .prev, .next {
+        z-index: 2;
+        margin:0;
+        border: 0;
+        border-width: 0;
+        padding: 0;
+        background: transparent;
+        display: block;
+        font-size: 20px;
+        float: left;
+        width: 40px;
+        height: 40px;
+        padding-top: 2px;
+        line-height: 1em;
+        text-align: center;
+        cursor: pointer;
+        
+        &:disabled, &.disabled {
+          cursor: default;
+          color: rgba(255,255,255,0.5);
+        }
+      }
+      
+      .next {
+        float: right;
+      }
+      
+      .text {
+        z-index: 1;
+        font-size: 18px;
+        display: block;
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        top: 0;
+        left: 40px;
+        margin: 0;
+        border: 0;
+        border-width: 0;
+        padding: 0;
+        padding-top: 0.4em;
+        background: transparent;
+        bottom: 0;
+        line-height: 1em;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
