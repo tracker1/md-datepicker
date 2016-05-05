@@ -24,10 +24,31 @@ export default () => ({
   // ()
   max: getMax(),
 
+  checkDate: (/* dtm */) => true,
+
   chooseYear: null, // future use
   chooseMonth: null, // future use
   chooseDate: {
     months: 1, // int 1-3
+  },
+
+  startWeek: 0, // sunday?
+  localize: {
+    month: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    day: [ 'S','M','T','W','T','F','S' ],
   },
 
   // Initial Screen Details

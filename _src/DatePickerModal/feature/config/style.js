@@ -1,8 +1,12 @@
 const base = {
   display: 'inline-block',
   position: 'relative',
+  backgroundColor: 'transparent',
   margin: 0,
   border: 0,
+  borderStyle: 'none',
+  borderWidth: 0,
+  borderRadius: 0,
   padding: 0,
   fontFamily: 'Roboto, "Helvetica Neue", sans-serif',
   fontStyle: 'normal',
@@ -11,6 +15,8 @@ const base = {
   lineHeight: '1.2em',
   textAlign: 'left',
   float: 'none',
+  color: 'inherit',
+  outline: 'none',
 };
 
 export default {
@@ -53,7 +59,90 @@ export default {
     backgroundColor: '#fff',
     boxShadow: '2px 2px 3px 3px rgba(0,0,0,0.4)',
   },
-  chooseDate: {},
+  chooseDate: {
+    heading: {
+      wrap: {
+        backgroundColor: '#0288d1',
+        color: '#eee',
+        cursor: 'pointer',
+      },
+      year: {
+        wrap: {
+          ...base,
+          display: 'block',          
+          paddingTop: '10px',
+          paddingBottom: '7px',
+        },
+        item: {
+          ...base,
+          width: '240px',
+          fontSize: '28px',
+          textAlign: 'center',
+        },
+        fullItem: {
+          ...base,
+          paddingTop: '10px',
+          paddingBottom: '7px',
+          display: 'block',
+          fontSize: '28px',
+          textAlign: 'center',
+        }
+      },
+      month: {
+        wrap: {
+          ...base,
+          width: '240px',
+          height: '2.4em',
+          whiteSpace: 'nowrap',
+        },
+        spacer: {
+          marginRight: '-2em',
+        },
+        prev: {
+          ...base,
+          fontSize: '20px',
+          display: 'block',
+          float: 'left',
+          width: '2em',
+          height: '2em',
+          paddingTop: '2px',
+          lineHeight: '1em',
+          textAlign: 'center',
+          cursor: 'pointer',
+        },
+        next: {
+          ...base,
+          fontSize: '20px',
+          display: 'block',
+          float: 'right',
+          width: '2em',
+          height: '2em',
+          paddingTop: '2px',
+          lineHeight: '1em',
+          textAlign: 'center',
+          cursor: 'pointer',
+        },
+        text: {
+          ...base,
+          display: 'block',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          lineHeight: '1em',
+          paddingTop: '0.6em',
+          textAlign: 'center',
+          cursor: 'pointer',
+        },
+      },
+    },
+    month: {
+      wrap: {},
+      row: {},
+      item: {},
+    },
+  },
   chooseMonth: {},
   chooseYear: {},
 };
