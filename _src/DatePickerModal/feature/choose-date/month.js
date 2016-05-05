@@ -4,7 +4,6 @@ export function dateCell(config, actions, dtm, m, selected) {
   const classes = [];
   const checked = config.checkDate(new Date(+dtm));
   
-  console.log('dateCell', selected, dtm);
   if (+selected === +dtm) classes.push('selected');
   
   if (typeof checked === 'string') classes.push(checked);
