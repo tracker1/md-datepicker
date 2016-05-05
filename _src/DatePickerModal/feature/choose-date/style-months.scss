@@ -42,8 +42,16 @@
         top: -0.1em;
         left: -0.1em;
         
+        &.selected {
+          background-color: rgba(2, 136, 209, 0.8) !important;
+        }
+        
         &.oob {
           color: #999;
+          
+          &.selected {
+            background-color: rgba(2, 136, 209, 0.2) !important;
+          }
         }
         
         &:disabled, &.disabled {
@@ -59,6 +67,10 @@
             font-weight: normal;
             background-color: transparent;
             cursor: not-allowed;
+            
+            &.selected {
+              background-color: rgba(2, 136, 209, 0.2) !important;
+            }
           }
         }
         

@@ -13,13 +13,18 @@ function handleResult(err, dtm) {
 }
 
 function init() {
+  var value = new Date();
+  var min = new Date(value.getFullYear() - 1, 8, 15); // September 15th of the previous year
+  var max = new Date(value.getFullYear() + 2, 0, 1); // start of the year after next (end of coming year)
+  
   document.body.innerHTML = content;
   document.getElementById('test1').addEventListener(
     'click',
     () => DatePickerModal.date({
       monthsToShow: 2,
-      min: new Date(2015, 8, 20),
-      max: new Date(2018, 0, 1),
+      value,
+      min,
+      max,
       checkDate: (dtm) => {
         //console.log('checkDate', dtm);
         if (dtm.getDay() == 5 && dtm.getDate() < 8) return false;
