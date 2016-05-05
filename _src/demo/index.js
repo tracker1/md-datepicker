@@ -16,12 +16,12 @@ function init() {
   document.getElementById('test1').addEventListener(
     'click',
     () => DatePickerModal.date({
-      chooseDate: { months: 3 },
-      min: new Date(2016, 9, 12),
+      chooseDate: { months: 2 },
+      min: new Date(2015, 8, 20),
       max: new Date(2018, 0, 1),
       checkDate: (dtm) => {
         console.log('checkDate', dtm);
-        if (dtm.getDay() == 6 && dtm.getDate() < 8) return false;
+        if (dtm.getDay() == 5 && dtm.getDate() < 8) return false;
         return true;
       },
     }, handleResult)

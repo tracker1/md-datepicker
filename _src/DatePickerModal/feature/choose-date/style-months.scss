@@ -58,7 +58,7 @@
           &:disabled, &.disabled {
             font-weight: normal;
             background-color: transparent;
-            cursor: default;
+            cursor: not-allowed;
           }
         }
         

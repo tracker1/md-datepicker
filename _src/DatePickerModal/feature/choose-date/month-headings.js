@@ -75,7 +75,7 @@ export default function renderMonthHeadings(props) {
           className='text'
           onClick={ event => {
             event.stopImmediatePropagation();
-            actions.changeScreen('choose-month');
+            actions.pickMonth(new Date(+m));
           }}
           ariaLabel='Change Month'
         >

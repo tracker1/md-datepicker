@@ -4,19 +4,22 @@ export default function renderYearHeadings(props) {
     chooseDate: { months },
     current,
   } = config;
-
+  
   // all months same year
-  if (months < 2 || current.month < 10) {
+  
+  if (months < 2 || current.month < 13 - months) {
+    let cm = new Date(current.year, current.month, 1);;
     return <div className="year">
-      <div
+      <button
         className='full'
         onClick={ event => {
           event.stopImmediatePropagation();
-          actions.changeScreen('choose-month');
+          actions.pickMonth(new Date(+cm));
         }}
+        data-dtm={ cm.toISOString() }
       >
         {current.year}
-      </div>
+      </button>
     </div>;
   }
 
@@ -26,21 +29,25 @@ export default function renderYearHeadings(props) {
   let sy;
   while (ret.length < months) {
     m.setMonth(m.getMonth() + 1);
+    let cm = new Date(+m);
     sy = false;
     if (m.getMonth() === 0) sy = true;
     if (m.getMonth() === 11) sy = true;
     ret.push(
-      <div className='item'>
+      <button 
+        className='item'
+        onClick={ event => {
+          event.stopImmediatePropagation();
+          actions.pickMonth(new Date(cm));
+        }}
+        data-dtm={ m.toISOString() }
+      >
         {sy ? m.getFullYear() : ''}
-      </div>
+      </button>
     );
   }
   return <div
     className='year'
-    onClick={ event => {
-      event.stopImmediatePropagation();
-      actions.changeScreen('choose-month');
-    }}
   >
     {ret}
   </div>;

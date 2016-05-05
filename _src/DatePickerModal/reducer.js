@@ -14,38 +14,32 @@ export default (state = EMPTY, action) => {
     case 'CANCEL': return { ...state, result: state.value || -1 };
     case 'RESULT': return { ...state, result: action.payload || -1 };
     case 'ERROR': return { ...state, error: action.payload || new Error() };
-    case 'SCREEN':
-      return {
-        ...state,
-        current: Object.assign(
-          {},
-          state.current,
-          { screen: action.payload },
-        ),
-      };
+
+    case 'PICK_YEAR':
+      newState = { ...state, current: Object.assign({}, state.current) };
+      newState.current.screen = 'choose-year';
+      return newState;
+      
+    case 'PICK_MONTH':
+      newState = { ...state, current: Object.assign({}, state.current) };
+      newState.current.screen = 'choose-month';
+      newState.current.year = action.payload.getFullYear();
+      return newState;
+      
     case 'SET_CURRENT_YEAR':
-      return state; // TODO
+      newState = { ...state, current: Object.assign({}, state.current) };
+      state.current.year = action.payload.getFullYear();
+      if (state.type === 'year') action.result = action.payload; 
+      else newState.current.screen = 'choose-month';
+      return newState;
+      
     case 'SET_CURRENT_MONTH':
-      newState = {...state};
-      screen = newState.screen;
-      
-      // finished with selection
-      switch (newState.type) {
-        
-      }
+      newState = { ...state, current: Object.assign({}, state.current) };
+      newState.current.month = action.payload.getMonth();
       if (newState.type === 'month') newState.result = action.payload;
+      else newState.current.screen = 'choose-date';
+      return newState;
       
-      if (new)
-      newState.current = Object.assign(
-        {},
-        newState.current,
-        { 
-          month: payload.getMonth(),
-          screen: newState.current.screen 
-        }
-      ); 
-      
-      return state; // TODO
     case 'ADVANCE_CURRENT_MONTH':
       min = new Date(state.min.getFullYear(), state.min.getMonth(), 1);
       max = new Date(

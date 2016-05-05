@@ -5,11 +5,17 @@
   white-space: nowrap;
   
   .year {
-    padding-top: 10px;
     white-space: nowrap;
     
     .item, .full {
-      font-size: 28px;
+      width: 100%;
+      display: block;
+      background-color: transparent;
+      border-style: none;
+      border-width: 0;
+      font-size: $font-size-h3;
+      line-height: 1em;
+      padding: 0.5em 0 0.1em 0;
       text-align: center;  
     }
     
@@ -48,7 +54,7 @@
         cursor: pointer;
         
         &:disabled, &.disabled {
-          cursor: default;
+          cursor: not-allowed;
           color: rgba(255,255,255,0.5);
         }
       }
