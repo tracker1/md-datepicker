@@ -53,8 +53,8 @@ DatePickerModal.choose(..., function(err, date) {
     // err will be an Error Object
     
     // date will be a Date object set 
-    // as UTC without a time part
-    console.log(date.ToISOString()); 
+    // as local Date
+    console.log(date.toISOString()); 
     
     // outputs '2015-01-01T00:00:00.000Z'
 }

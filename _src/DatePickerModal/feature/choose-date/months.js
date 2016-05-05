@@ -3,7 +3,7 @@ import Month from './month';
 export default function renderMonths(props) {
   const { config } = props;
   const {
-    chooseDate: { months },
+    monthsToShow: months,
     current,
   } = config;
 

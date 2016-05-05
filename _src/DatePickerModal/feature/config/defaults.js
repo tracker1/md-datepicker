@@ -26,11 +26,7 @@ export default () => ({
 
   checkDate: (/* dtm */) => true,
 
-  chooseYear: null, // future use
-  chooseMonth: null, // future use
-  chooseDate: {
-    months: 1, // int 1-3
-  },
+  monthsToShow: 1, // int 1-3
 
   startWeek: 0, // sunday?
   localize: {

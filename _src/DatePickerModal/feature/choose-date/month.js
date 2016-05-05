@@ -1,5 +1,5 @@
 export function dateCell(config, actions, dtm, m) {
-  if (config.chooseDate.months > 1 && dtm.getMonth() !== m.getMonth()) return '';
+  if (config.monthsToShow > 1 && dtm.getMonth() !== m.getMonth()) return '';
 
   const classes = [];
   const checked = config.checkDate(new Date(+dtm));

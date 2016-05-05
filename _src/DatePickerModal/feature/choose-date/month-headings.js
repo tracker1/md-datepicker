@@ -2,7 +2,7 @@
 export default function renderMonthHeadings(props) {
   const { actions, config } = props;
   const {
-    chooseDate: { months },
+    monthsToShow: months,
     current,
     localize: l,
   } = config;

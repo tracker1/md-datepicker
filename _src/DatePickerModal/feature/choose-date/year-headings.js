@@ -1,7 +1,7 @@
 export default function renderYearHeadings(props) {
   const { actions, config } = props;
   const {
-    chooseDate: { months },
+    monthsToShow: months,
     current,
   } = config;
   

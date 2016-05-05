@@ -13,7 +13,8 @@ export default function normalizeConfig(config = {}, type) {
   cfg = normalizeCurrent(cfg);
   cfg = normalizeScreen(cfg);
 
-  if (window.screen.width <= 880 || window.screen.height < 768) cfg.chooseDate.months = 1;
+  if (window.screen.width < 900 && cfg.monthsToShow > 2) cfg.monthsToShow = 2;
+  if (window.screen.width <= 678 || window.screen.height < 768) cfg.monthsToShow = 1;
 
   // shim function to test if a date-time is valid, if it isn't set.
   if (typeof cfg.validDate !== 'function') cfg.validDate = (/* dtm */) => true;
