@@ -55,6 +55,7 @@ export default function renderMonth(props) {
   }
 
   if (stack.length) rows.push(<tr>{stack}</tr>);
+  if (rows.length < 6) rows.push(<tr><td><button disabled="true" /></td></tr>);
 
   return <div className='month'>
     <table>

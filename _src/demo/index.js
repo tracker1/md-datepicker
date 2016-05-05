@@ -19,6 +19,11 @@ function init() {
       chooseDate: { months: 3 },
       min: new Date(2016, 9, 12),
       max: new Date(2018, 0, 1),
+      checkDate: (dtm) => {
+        console.log('checkDate', dtm);
+        if (dtm.getDay() == 6 && dtm.getDate() < 8) return false;
+        return true;
+      },
     }, handleResult)
   );
 }
