@@ -1,4 +1,5 @@
 import getDefault from './defaults';
+import normalizeDates from './normalize-dates';
 import normalizeCurrent from './normalize-current';
 import normalizeScreen from './normalize-screen';
 
@@ -6,10 +7,8 @@ export default function normalizeConfig(config = {}, type) {
   // shallow merge defaults, style, passed in config, and type
   let cfg = Object.assign({}, getDefault(), config, { type: type || 'date' });
 
-  // if cfg.value is a string, attempt to make it a Date.
-  if (typeof cfg.value === 'string') cfg.value = new Date(cfg.value) || null;
-
   // normalize current settings from input
+  cfg = normalizeDates(cfg);
   cfg = normalizeCurrent(cfg);
   cfg = normalizeScreen(cfg);
 

@@ -1,0 +1,99 @@
+[role="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+            box-sizing: content-box;
+}
+
+/* Reset `button` and button-style `input` default styles */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+    background: none;
+    border: 0;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* Make `a` like a button */
+[role="button"] {
+    color: inherit;
+    cursor: default;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: pre;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+
+
+div, a, button, button:hover {
+  font-family: $font-family-base;
+  font-size: $font-size-root;
+  font-weight: normal;
+  color: inherit;
+  line-height: 1.2em;
+  display: block;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  background: none;
+  background-image: none;
+  background-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+a {
+  cursor: pointer;
+  a.disabled {
+    cursor: text;
+  }
+}
+
+th, td {
+  font-family: $font-family-base;
+  font-size: $font-size-root;
+  font-weight: normal;
+  color: inherit;
+  line-height: 1.2em;
+  display: table-cell;
+  margin:0;
+  border:0;
+  padding:0;
+  width: auto;
+  height: auto;
+  background: none;
+  background-image: none;
+  background-color: transparent;
+}
+
+th {
+  font-weight: bold;
+}

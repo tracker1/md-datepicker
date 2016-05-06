@@ -1,20 +1,37 @@
-export default function normalizeCurrent(cfg) {
-  const current = Object.assign({}, cfg.current || {});
-  let tmp = (typeof cfg.value === 'string') ? new Date(cfg.value) : cfg.value;
+import * as D from 'lib/dateutils';
 
-  // set temp position based on defaults
-  if (!tmp) {
-    const now = new Date();
-    if (now < cfg.min) tmp = cfg.min;
-    else if (now > cfg.max) tmp = cfg.max;
-    else tmp = now;
+window.D = D;
+
+export default function normalizeCurrent(cfg) {
+  const { value, min, max, current: c } = cfg;
+
+  // default to current date/time
+  let tmp = new Date();
+
+  // if there is a configured value in range, use that
+  if (value instanceof Date && value >= min && value < max) {
+    tmp = D.clone(value);
+    window.console.log('value in range', tmp);
   }
 
-  current.year = current.year || tmp.getFullYear();
-  current.month = current.month || tmp.getMonth();
-  current.date = current.date || tmp.getDate();
-  current.hour = current.hour || tmp.getHours();
-  current.minute = current.minute || tmp.getMinutes();
+  // if before min, set to min
+  if (tmp < min) {
+    tmp = D.clone(min);
+    window.console.log('value before min', tmp);
+  }
 
-  return { ...cfg, current };
+  // if after max, set to day before max
+  if (tmp >= max) {
+    tmp = D.clone(max);
+    tmp.setDate(tmp.getDate() + 1);
+    window.console.log('value after max', tmp, max);
+  }
+
+  return { ...cfg, current: {
+    year: c.year || tmp.getFullYear(),
+    month: c.month || tmp.getMonth(),
+    date: c.date || tmp.getDate(),
+    hour: c.hour || tmp.getHours(),
+    minute: c.minute || tmp.getMinutes(),
+  }};
 }

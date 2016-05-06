@@ -3,39 +3,38 @@
   color: #eee;
   cursor: pointer;
   white-space: nowrap;
-  
+
   .year {
     white-space: nowrap;
-    
+
     .item, .full {
       width: 100%;
       display: block;
       background-color: transparent;
       border-style: none;
       border-width: 0;
-      font-size: $font-size-h3;
+      font-size: 24px;
       line-height: 1em;
       padding: 0.5em 0 0.1em 0;
-      text-align: center;  
+      text-align: center;
     }
-    
+
     .item {
-      font-size: 28px;
       display: inline-block;
       position: relative;
       width: 280px;
     }
   }
-  
+
   .months {
     white-space: no-wrap;
-    
+
     .month {
       display: inline-block;
       position: relative;
       width: 280px;
       height: 2.4em;
-      
+
       .prev, .next {
         z-index: 2;
         margin:0;
@@ -52,20 +51,21 @@
         line-height: 1em;
         text-align: center;
         cursor: pointer;
-        
+
         &:disabled, &.disabled {
           cursor: not-allowed;
           color: rgba(255,255,255,0.5);
         }
       }
-      
+
       .next {
         float: right;
       }
-      
+
       .text {
         z-index: 1;
-        font-size: 18px;
+        font-size: 20px;
+        line-height: 1em;
         display: block;
         position: absolute;
         width: 200px;
@@ -76,10 +76,8 @@
         border: 0;
         border-width: 0;
         padding: 0;
-        padding-top: 0.4em;
         background: transparent;
         bottom: 0;
-        line-height: 1em;
         text-align: center;
         cursor: pointer;
       }

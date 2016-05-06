@@ -1,13 +1,12 @@
-function getYears(actions, min, max) {
-  const rmin = new Date(min.getFullYear(), 0, 1);
-  const rmax = new Date(max.getFullYear(), 0, 1);
-  if (rmax < max) rmax.setFullYear(rmax.getFullYear() + 1);
+import * as D from 'lib/dateutils';
 
+function getYears(actions, min, max) {
   const ret = [];
-  for (let y = rmin.getFullYear(); y < rmax.getFullYear(); y++) {
+  for (let y = min.getFullYear(); y < max.getFullYear(); y++) {
     const dtm = new Date(y, 0, 1);
     ret.push(
       <button
+        className='dtm-picker-item'
         onClick={event => {
           event.stopImmediatePropagation();
           actions.setCurrentYear(dtm);
@@ -24,15 +23,19 @@ export default function renderChooseYear(props) {
   // window.console.log('renderChooseYear', props);
   const { actions, config: { min, max } } = props;
 
-  return <div className="choose-year" ariaLabel='Choose a year.'>
+  return <div className="choose-year dtm-picker" ariaLabel='Choose a year.'>
     <div
-      class="header"
+      className='dtm-picker-header'
       ariaLabel='Select another year.'
     >
       Select a year.
     </div>
-    <div class="picker">
-      {getYears(actions, min, max)}
+    <div className='dtm-picker-wrap'>
+      <div className='dtm-picker-outer'>
+        <div className='dtm-picker-inner'>
+          {getYears(actions, D.minYear(min), D.maxYear(max))}
+        </div>
+      </div>
     </div>
   </div>;
 }
