@@ -1,8 +1,10 @@
+import * as D from 'lib/dateutils';
+
 export function dateCell(config, actions, dtm, m, selected) {
   if (config.monthsToShow > 1 && dtm.getMonth() !== m.getMonth()) return '';
 
   const classes = [];
-  const checked = config.checkDate(new Date(+dtm));
+  const checked = config.checkDate(D.clone(dtm));
 
   if (+selected === +dtm) classes.push('selected');
 
@@ -36,13 +38,15 @@ export function dateCell(config, actions, dtm, m, selected) {
 export default function renderMonth(props) {
   const { month, config, actions } = props;
   const { value, localize: l } = config;
-  const selected = !value ? null : new Date(value.getFullYear(), value.getMonth(), value.getDate());
+  const selected = !value ? null : D.date(value);
 
   let rows = [];
   let stack = [];
 
-  const dtm = new Date(month.getFullYear(), month.getMonth(), 1 - month.getDay());
-  const end = new Date(month.getFullYear(), month.getMonth() + 1, 1);
+  const dtm = D.minMonth(month);
+  dtm.setDate(dtm.getDate() - dtm.getDay());
+
+  const end = D.nextMonth(month);
 
   while (dtm < end || stack.length < 7) {
     if (stack.length === 7) {
@@ -51,7 +55,7 @@ export default function renderMonth(props) {
     }
     stack.push(
       <td>
-        { dateCell(config, actions, new Date(+dtm), new Date(+month), selected) }
+        { dateCell(config, actions, D.clone(dtm), D.clone(month), selected) }
       </td>
     );
     dtm.setDate(dtm.getDate() + 1);

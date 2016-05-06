@@ -3,7 +3,7 @@ import * as D from 'lib/dateutils';
 window.D = D;
 
 export default function normalizeCurrent(cfg) {
-  const { value, min, max, current: c } = cfg;
+  const { value, min, max, monthsToShow:months, current: c } = cfg;
 
   // default to current date/time
   let tmp = new Date();
@@ -19,9 +19,10 @@ export default function normalizeCurrent(cfg) {
   }
 
   // if after max, set to day before max
-  if (tmp >= max) {
-    tmp = D.clone(max);
-    tmp.setDate(tmp.getDate() - 1);
+  const vmax = D.maxMonth(D.clone(max));
+  vmax.setMonth(vmax.getMonth() - months);
+  if (tmp >= D.maxMonth(max)) {
+    tmp = D.prevMonth(max);
   }
 
   return { ...cfg, current: {

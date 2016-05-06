@@ -14,7 +14,7 @@ export const parse = function parseDtm(dtm, defaultValue) {
       const dp = dtm.split('-').map(d => +d);
       if (dp.length === 1) dp.push(1);
       if (dp.length === 2) dp.push(1);
-      if (dp.lenght > 1) dp[1] = dp[1] - 1;
+      dp[1] = dp[1] - 1;
       return new Date(...dp);
     }
     return new Date(dtm) || defaultValue;
@@ -46,3 +46,6 @@ export const maxMonth = dtm => {
   // otherwise advance month
   return new Date(dtm.getFullYear(), dtm.getMonth() + 1, 1);
 };
+
+export const nextMonth = dtm => new Date(dtm.getFullYear(), dtm.getMonth() + 1, 1);
+export const prevMonth = dtm => new Date(dtm.getFullYear(), dtm.getMonth() - 1, 1);

@@ -20,7 +20,6 @@ function getYears(actions, min, max) {
 }
 
 export default function renderChooseYear(props) {
-  // window.console.log('renderChooseYear', props);
   const { actions, config: { min, max } } = props;
 
   return <div className="choose-year dtm-picker" ariaLabel='Choose a year.'>

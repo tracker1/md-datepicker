@@ -2,8 +2,6 @@
 const EMPTY = {};
 
 export default function reducer(state = EMPTY, action) {
-  // window.console.log('reducer', action, state);
-
   const newState = { ...state, current: Object.assign({}, state.current) };
   let min;
   let max;
