@@ -1,3 +1,4 @@
+import * as D from 'lib/dateutils';
 
 export default function renderMonthHeadings(props) {
   const { actions, config } = props;
@@ -7,10 +8,12 @@ export default function renderMonthHeadings(props) {
     localize: l,
   } = config;
 
-  const min = new Date(config.min.getFullYear(), config.min.getMonth() - 1, 1);
-  const max = new Date(config.max.getFullYear(), config.max.getMonth() - 1 - months, 1);
+  const min = D.minMonth(config.min);
+  const max = D.maxMonth(config.max);
+  max.setMonth(max.getMonth() - months);
+
   const m = new Date(current.year, current.month - 1, 1);
-  const hasPrev = min < m;
+  const hasPrev = min <= m;
   const hasNext = max > m;
 
   const ret = [];

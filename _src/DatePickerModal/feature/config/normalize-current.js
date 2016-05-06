@@ -11,20 +11,17 @@ export default function normalizeCurrent(cfg) {
   // if there is a configured value in range, use that
   if (value instanceof Date && value >= min && value < max) {
     tmp = D.clone(value);
-    window.console.log('value in range', tmp);
   }
 
   // if before min, set to min
   if (tmp < min) {
     tmp = D.clone(min);
-    window.console.log('value before min', tmp);
   }
 
   // if after max, set to day before max
   if (tmp >= max) {
     tmp = D.clone(max);
-    tmp.setDate(tmp.getDate() + 1);
-    window.console.log('value after max', tmp, max);
+    tmp.setDate(tmp.getDate() - 1);
   }
 
   return { ...cfg, current: {
