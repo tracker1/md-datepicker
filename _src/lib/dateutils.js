@@ -32,7 +32,7 @@ export const minMonth = dtm => new Date(dtm.getFullYear(), dtm.getMonth(), 1);
 export const maxYear = dtm => {
   // if the date is already the start of the year, use it as-is
   const dp = date(dtm);
-  if (dp === dtm && dp === minYear(dtm)) return dp;
+  if (dp.getMonth() === 0 && dp.getDate() === 1) return dp;
 
   // otherwise, use the start of the following year
   return new Date(dtm.getFullYear() + 1, 0, 1);

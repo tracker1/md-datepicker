@@ -2,7 +2,9 @@ import * as D from 'lib/dateutils';
 
 function getYears(actions, min, max) {
   const ret = [];
-  for (let y = min.getFullYear(); y < max.getFullYear(); y++) {
+  const miny = min.getFullYear();
+  const maxy = max.getFullYear();
+  for (let y = miny; y < maxy; y++) {
     const dtm = new Date(y, 0, 1);
     ret.push(
       <button

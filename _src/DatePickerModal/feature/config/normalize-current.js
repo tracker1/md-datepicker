@@ -1,7 +1,5 @@
 import * as D from 'lib/dateutils';
 
-window.D = D;
-
 export default function normalizeCurrent(cfg) {
   const { value, min, max, monthsToShow:months, current: c } = cfg;
 
