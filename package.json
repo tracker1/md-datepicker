@@ -11,7 +11,7 @@
     "prebuild": "rimraf dist && mkdir dist",
     "postbuild": "echo 'POSTBUILD' && exit 0",
     "test": "eslint _src",
-    "demo-site": "git subtree push --prefix output origin gh-pages"
+    "demo-site": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [
     "preact",
