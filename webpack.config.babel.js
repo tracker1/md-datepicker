@@ -17,7 +17,7 @@ module.exports = {
 
   output: {
     path: './dist',
-    publicPath: '/',
+    publicPath: './',
     filename: '[name].js',
     library: ["[name]"],
     libraryTarget: "umd"
@@ -83,7 +83,7 @@ module.exports = {
       path.resolve(__dirname, "./node_modules")
     ]
   },
-  
+
   postcss: () => [
     autoprefixer({ browsers: 'last 2 versions' })
   ],

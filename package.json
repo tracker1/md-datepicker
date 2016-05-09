@@ -10,7 +10,8 @@
     "build": "NODE_ENV=production webpack -p --progress",
     "prebuild": "rimraf dist && mkdir dist",
     "postbuild": "echo 'POSTBUILD' && exit 0",
-    "test": "eslint _src"
+    "test": "eslint _src",
+    "demo-site": "git subtree push --prefix output origin gh-pages"
   },
   "keywords": [
     "preact",
