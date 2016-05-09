@@ -10,7 +10,7 @@ export default function renderMonthHeadings(props) {
 
   const min = D.minMonth(config.min);
   const max = D.maxMonth(config.max);
-  max.setMonth(max.getMonth() - months);
+  max.setMonth(max.getMonth() - months - 1);
 
   const m = new Date(current.year, current.month - 1, 1);
   const hasPrev = min <= m;

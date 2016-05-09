@@ -1,3 +1,4 @@
+import * as D from 'lib/dateutils';
 
 const EMPTY = {};
 
@@ -32,24 +33,23 @@ export default function reducer(state = EMPTY, action) {
       return newState;
 
     case 'SET_CURRENT_MONTH':
-      max = new Date(
-        state.max.getFullYear(),
-        state.max.getMonth() - state.monthsToShow,
-        1
-      );
-      newState.current.month = action.payload > max ? max.getMonth() : action.payload.getMonth();
+      max = D.maxMonth(D.clone(state.max));
+      max.setMonth(max.getMonth() - state.monthsToShow);
+      if (action.payload > max) {
+        newState.current.month = max.getMonth();
+      } else {
+        newState.current.month = action.payload.getMonth();
+      }
       newState.current.date = 1;
+
       if (newState.type === 'month') newState.result = action.payload;
       else newState.current.screen = 'choose-date';
       return newState;
 
     case 'ADVANCE_CURRENT_MONTH':
-      min = new Date(state.min.getFullYear(), state.min.getMonth(), 1);
-      max = new Date(
-        state.max.getFullYear(),
-        state.max.getMonth() + 1 - state.monthsToShow,
-        1
-      );
+      min = D.minMonth(state.min);
+      max = D.maxMonth(state.max);
+      max.setMonth(max.getMonth() - state.monthsToShow);
       dtm = new Date(state.current.year, state.current.month + action.payload, 1);
 
       // don't advance if out of range

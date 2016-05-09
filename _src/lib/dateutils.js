@@ -41,7 +41,7 @@ export const maxYear = dtm => {
 export const maxMonth = dtm => {
   // if already at the top of the month, use it
   const dp = date(dtm);
-  if (dp === dtm && dp.getDate() === 1) return dp;
+  if (dp.getDate() === 1) return dp;
 
   // otherwise advance month
   return new Date(dtm.getFullYear(), dtm.getMonth() + 1, 1);
