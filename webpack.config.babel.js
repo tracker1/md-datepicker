@@ -6,8 +6,8 @@ import autoprefixer from 'autoprefixer';
 
 const ENV = process.env.NODE_ENV || 'development';
 
-let demoCSS = new ExtractTextPlugin('demo.css');
-let datepickerCSS = new ExtractTextPlugin('DatePickerModal.css');
+const demoCSS = new ExtractTextPlugin('demo.css');
+const datepickerCSS = new ExtractTextPlugin('DatePickerModal.css');
 
 module.exports = {
   entry: {
@@ -96,24 +96,31 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(ENV)
     }),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'md-datepicker demo',
+      xhtml: true,
+    }),
     new webpack.ProvidePlugin({
-      preact: "preact",
-			React: "preact-compat",
-			ReactDOM: "preact-compat"
-    })
-  ]).concat(ENV==='production' ? [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: true,
-      comments: false
-    })
-  ] : []),
+      preact: 'preact',
+      React: 'preact-compat',
+      ReactDOM: 'preact-compat',
+    }),
+  ]).concat(
+    ENV === 'production'
+    ? [
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        mangle: true,
+        compress: true,
+        comments: false,
+      }),
+    ]
+    : []
+  ),
 
   stats: { colors: true },
 
-  devtool: ENV==='production' ? 'source-map' : 'inline-source-map',
+  devtool: ENV === 'production' ? 'source-map' : 'inline-source-map',
 
   devServer: {
     port: process.env.PORT || 8080,

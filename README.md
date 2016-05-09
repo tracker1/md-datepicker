@@ -10,6 +10,7 @@ Date Picker Control
 
 * Inspired by Material Design
 * Stand Alone
+* [demo](http://tracker1.github.io/md-datepicker/)
 
 ## Installation
 
