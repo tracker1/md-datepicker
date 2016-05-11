@@ -1,6 +1,8 @@
 import './feature/style';
 import initialize from './feature/initialize';
 
+export * as utils from 'lib/dateutils';
+
 // export { getStyles, setStyles } from './feature/style';
 export const year = (options, callback) => initialize(options, callback, 'year');
 export const month = (options, callback) => initialize(options, callback, 'month');

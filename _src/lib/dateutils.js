@@ -2,22 +2,25 @@ export const clone = dtm => new Date(+dtm);
 
 export const parse = function parseDtm(dtm, defaultValue) {
 
-  if (dtm instanceof Date) return dtm;
+  if (dtm instanceof Date && !isNaN(dtm)) return dtm;
 
   if (typeof dtm === 'number') {
     return new Date(dtm) || defaultValue;
   }
 
   if (typeof dtm === 'string') {
+    const dtm2 = dtm.replace(/^["']|["']$/g, '');
+
     // support iso-style yyyy, yyyy-mm, yyyy-mm-dd local
     if (/^\d{4}(\-\d{2}){0,2}$/.test(dtm)) {
-      const dp = dtm.split('-').map(d => +d);
+      const dp = dtm2.split('-').map(d => +d);
       if (dp.length === 1) dp.push(1);
       if (dp.length === 2) dp.push(1);
       dp[1] = dp[1] - 1;
       return new Date(...dp);
     }
-    return new Date(dtm) || defaultValue;
+    const tmpDtm = new Date(dtm2);
+    return !isNaN(tmpDtm) ? tmpDtm : defaultValue;
   }
 
   return defaultValue;
