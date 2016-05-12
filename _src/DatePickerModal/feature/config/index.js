@@ -16,7 +16,7 @@ export default function normalizeConfig(config = {}, type) {
   if (window.screen.width <= 678 || window.screen.height < 768) cfg.monthsToShow = 1;
 
   // shim function to test if a date-time is valid, if it isn't set.
-  if (typeof cfg.validDate !== 'function') cfg.validDate = (/* dtm */) => true;
+  if (typeof cfg.checkDate !== 'function') cfg.checkDate = (/* dtm */) => true;
 
   delete cfg.error;
   delete cfg.result;
