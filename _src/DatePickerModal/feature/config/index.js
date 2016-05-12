@@ -12,6 +12,9 @@ export default function normalizeConfig(config = {}, type) {
   cfg = normalizeCurrent(cfg);
   cfg = normalizeScreen(cfg);
 
+  cfg.startOfWeek = ~~cfg.startOfWeek;
+  if (cfg.startOfWeek > 6 || cfg.startOfWeek < 0) cfg.startOfWeek = 0;
+
   if (window.screen.width < 900 && cfg.monthsToShow > 2) cfg.monthsToShow = 2;
   if (window.screen.width <= 678 || window.screen.height < 768) cfg.monthsToShow = 1;
 

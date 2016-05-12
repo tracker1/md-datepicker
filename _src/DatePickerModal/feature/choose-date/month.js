@@ -35,6 +35,17 @@ export function dateCell(config, actions, dtm, m, selected) {
   </button>;
 }
 
+function getDaysOfWeek(days, startOfWeek) {
+  const ret = [];
+  let i = startOfWeek;
+  while (ret.length < 7) {
+    ret.push(<th class="d">{days[i]}</th>)
+    i++;
+    if (i > 6) i = 0;
+  }
+  return ret;
+}
+
 export default function renderMonth(props) {
   const { month, config, actions } = props;
   const { value, localize: l } = config;
@@ -43,8 +54,12 @@ export default function renderMonth(props) {
   let rows = [];
   let stack = [];
 
+  // get start of week at or before top of month
   const dtm = D.minMonth(month);
-  dtm.setDate(dtm.getDate() - dtm.getDay());
+  dtm.setDate(dtm.getDate() - dtm.getDay() + config.startOfWeek);
+  if (dtm.getMonth() === month.getMonth() && dtm.getDate() > 1) {
+    dtm.setDate(dtm.getDate() - 7);
+  }
 
   const end = D.nextMonth(month);
 
@@ -68,7 +83,7 @@ export default function renderMonth(props) {
     <table>
       <thead>
         <tr class='dow'>
-          {l.days.map((d) => <th class="d">{d}</th>)}
+          {getDaysOfWeek(l.days, config.startOfWeek)}
         </tr>
       </thead>
       <tbody>

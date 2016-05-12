@@ -62,6 +62,9 @@ var options = {
   // (optional) Display more than one month in the Day chooser
   monthsToShow: 1 - 3, // Default: 1
 
+  // (optional) Start of week
+  startOfWeek: 0, // Default: sunday == 0
+
   // (optional) custom date checking
   // return a falsy value to disable the date
   // return a truthy value to enable the date

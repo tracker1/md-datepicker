@@ -27,7 +27,8 @@ export default () => ({
 
   monthsToShow: 1, // int 1-3
 
-  startWeek: 0, // sunday?
+  startOfWeek: 0, // sunday
+
   localize: {
     month: [
       'January',
