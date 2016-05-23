@@ -19,6 +19,13 @@ export function getElement(screen, props) {
 export function renderMain(props /* , context */) {
   const { current } = props.config;
   const actions = props.actions;
+
+  const agent = navigator && navigator.userAgent || '';
+  const renderTop = (!(
+    (/Chrome\//).test(agent)
+    || (/\bWindows NT\b/).test(agent)
+  ));
+
   return <div
     className='outer'
   >
@@ -27,7 +34,7 @@ export function renderMain(props /* , context */) {
       onClick={ actions.cancel }
     >
       <div
-        className='inner2'
+        className={`inner2 ${renderTop ? 'top' : ''}`}
         onClick={ () => true }
       >
         <div
