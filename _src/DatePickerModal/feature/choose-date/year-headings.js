@@ -1,9 +1,9 @@
 export default function renderYearHeadings(props) {
   const { actions, config } = props;
   const {
-    monthsToShow: months,
     current,
   } = config;
+  const months = current.months;
 
   // all months same year
 

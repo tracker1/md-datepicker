@@ -9,20 +9,20 @@ export function handleKeyPress(e, dispatch) {
   }
 }
 
-export function cleanup(refs) {
+export function cleanup(handle) {
   // exiting, clear event listeners
-  window.removeEventListener('keyup', refs.handle.keyup);
-  window.removeEventListener('resize', refs.handle.resize);
+  window.removeEventListener('keyup', handle.keyup);
+  window.removeEventListener('resize', handle.resize);
 }
 
 export default function bindWindowEvents(refs) {
-  refs.cleanup.push(() => cleanup(refs));
-
-  const { handle } = Object.assign(refs, { handle: refs.handle || {} });
+  const handle = {};
 
   handle.keyup = e => handleKeyPress(e, refs.store.dispatch);
   window.addEventListener('keyup', handle.keyup);
 
   handle.resize = throttle(() => refs.store.dispatch(resize()), 100);
   window.addEventListener('resize', handle.resize);
+
+  refs.cleanup.push(() => cleanup(handle));
 }

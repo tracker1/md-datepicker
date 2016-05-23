@@ -7,17 +7,14 @@ export function cleanup(refs) {
     document.documentElement.style.paddingRight = refs.documentElement.paddingRight || '';
   }
   if (refs.component) ReactDOM.render('', refs.container, refs.component);
-  setTimeout(() => {
-    // remove instance
-    if (refs.container) refs.container.parentNode.removeChild(refs.container);
+  if (refs.container) refs.container.parentNode.removeChild(refs.container);
 
-    // remove outer context
-    const outerContainer = document.getElementById('DatePickerModal');
-    if (outerContainer) {
-      const components = outerContainer.querySelectorAll('.dpm-container');
-      if (!components.length) outerContainer.parentNode.removeChild(outerContainer);
-    }
-  }, 100);
+  // remove outer context
+  const outerContainer = document.getElementById('DatePickerModal');
+  if (outerContainer) {
+    const components = outerContainer.querySelectorAll('.dpm-container');
+    if (!components.length) outerContainer.parentNode.removeChild(outerContainer);
+  }
 }
 
 export default function createContainer(refs) {
