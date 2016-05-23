@@ -1,3 +1,4 @@
+export const resize = () => ({ type: 'WINDOW_RESIZE' });
 
 export const cancel = () => ({ type: 'CANCEL' });
 

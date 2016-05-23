@@ -1,7 +1,7 @@
 import * as D from 'lib/dateutils';
 
 export default function normalizeCurrent(cfg) {
-  const { value, min, max, monthsToShow:months, current: c } = cfg;
+  const { value, min, max, monthsToShow: months, current: c } = cfg;
 
   // default to current date/time
   let tmp = new Date();
@@ -24,10 +24,11 @@ export default function normalizeCurrent(cfg) {
   }
 
   return { ...cfg, current: {
+    months,
     year: c.year || tmp.getFullYear(),
     month: c.month || tmp.getMonth(),
     date: c.date || tmp.getDate(),
     hour: c.hour || tmp.getHours(),
     minute: c.minute || tmp.getMinutes(),
-  }};
+  } };
 }

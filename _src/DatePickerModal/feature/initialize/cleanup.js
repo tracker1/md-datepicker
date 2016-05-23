@@ -1,6 +1,9 @@
 export default function cleanup(refs, cb) {
   setTimeout(() => {
-    if (refs.body) document.body.style.overflow = refs.body.overflow || '';
+    if (refs.documentElement) {
+      document.documentElement.style.overflow = refs.documentElement.overflow || '';
+      document.documentElement.style.paddingRight = refs.documentElement.paddingRight || '';
+    }
     if (refs.component) ReactDOM.render('', refs.container, refs.component);
     setTimeout(() => {
       // remove instance

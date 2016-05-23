@@ -21,7 +21,6 @@ export default function normalizeConfig(config = {}, type) {
   // shim function to test if a date-time is valid, if it isn't set.
   if (typeof cfg.checkDate !== 'function') cfg.checkDate = (/* dtm */) => true;
 
-  delete cfg.error;
   delete cfg.result;
 
   return cfg;

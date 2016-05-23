@@ -7,11 +7,26 @@ export default function reducer(state = EMPTY, action) {
   let min;
   let max;
   let dtm;
+  let w;
+  let months;
 
   switch (action.type) {
-    case 'CANCEL': return { ...state, result: state.value || -1 };
-    case 'RESULT': return { ...state, result: action.payload || -1 };
-    case 'ERROR': return { ...state, error: action.payload || new Error() };
+    case 'CANCEL': return { ...state, result: [null, state.value] };
+    case 'RESULT': return { ...state, result: [null, action.payload] };
+    case 'ERROR': return { ...state, result: [action.payload || new Error(), null] };
+
+    case '@@redux/INIT': // initial setting
+    case 'WINDOW_RESIZE':
+      w = newState.window = {
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+      };
+      months = state.monthsToShow;
+      if (w.width < 600) months = 1;
+      else if (w.width < 880 && months === 3) months = 2;
+      newState.current.months = months;
+      return newState;
+
 
     case 'PICK_YEAR':
       newState.current.screen = 'choose-year';

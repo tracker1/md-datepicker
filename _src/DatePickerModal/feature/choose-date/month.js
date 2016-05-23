@@ -39,7 +39,7 @@ function getDaysOfWeek(days, startOfWeek) {
   const ret = [];
   let i = startOfWeek;
   while (ret.length < 7) {
-    ret.push(<th class="d">{days[i]}</th>)
+    ret.push(<th class="d">{days[i]}</th>);
     i++;
     if (i > 6) i = 0;
   }

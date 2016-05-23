@@ -3,10 +3,10 @@ import * as D from 'lib/dateutils';
 export default function renderMonthHeadings(props) {
   const { actions, config } = props;
   const {
-    monthsToShow: months,
     current,
     localize: l,
   } = config;
+  const months = current.months;
 
   const min = D.minMonth(config.min);
   const max = D.maxMonth(config.max);

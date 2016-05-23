@@ -1,4 +1,5 @@
 // import { getStyles } from '../style';
+import getScrollbarWidth from 'lib/get-scrollbar-width';
 
 export default function createContainer(refs) {
   let outerContainer = document.getElementById('DatePickerModal');
@@ -19,8 +20,15 @@ export default function createContainer(refs) {
   }
   */
 
-  Object.assign(refs, { body: { overflow: document.body.style.overflow } });
-  document.body.style.overflow = 'hidden';
+  Object.assign(refs, {
+    documentElement: {
+      overflow: document.documentElement.style.overflow,
+      paddingRight: document.documentElement.style.paddingRight,
+    },
+  });
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.paddingRight = `${getScrollbarWidth()}px`;
+
   const container = document.createElement('div');
   container.id = `date-picker-modal-${refs.instance}`;
   container.className = 'dpm-container';

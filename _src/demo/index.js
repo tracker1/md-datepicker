@@ -24,7 +24,7 @@ function openTest1() {
   const max = new Date(value.getFullYear() + 2, 0, 1);
 
   const options = {
-    monthsToShow: 2,
+    monthsToShow: 3,
     value,
     min,
     max,
@@ -35,7 +35,7 @@ function openTest1() {
     },
   };
 
-  DatePickerModal.date(options, handleResult)
+  DatePickerModal.date(options, handleResult);
 }
 
 function init() {

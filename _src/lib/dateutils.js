@@ -1,7 +1,6 @@
 export const clone = dtm => new Date(+dtm);
 
 export const parse = function parseDtm(dtm, defaultValue) {
-
   if (dtm instanceof Date && !isNaN(dtm)) return dtm;
 
   if (typeof dtm === 'number') {

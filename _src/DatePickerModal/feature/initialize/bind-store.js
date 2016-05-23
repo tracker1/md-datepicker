@@ -4,14 +4,11 @@ export default function bindStoreCallback(refs) {
   const unsub = refs.store.subscribe(() => {
     const state = refs.store.getState();
 
-    if (state.error) {
-      unsub();
-      return cleanup(refs, () => refs.callback(state.error, null));
-    }
     if (state.result) {
+      const [error, value] = state.result;
       unsub();
-      return cleanup(refs, () => refs.callback(null, state.result === -1 ? null : state.result));
+      cleanup(refs, () => refs.callback(error, value));
+      return;
     }
-    return null;
   });
 }
