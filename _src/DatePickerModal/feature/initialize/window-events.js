@@ -9,17 +9,15 @@ export function handleKeyPress(e, dispatch) {
   }
 }
 
-export function handleStoreChange(refs) {
-  // check for exit state
-  const state = refs.store.getState();
-  if (!(state.error || state.result)) return; // nothing to do
-
+export function cleanup(refs) {
   // exiting, clear event listeners
   window.removeEventListener('keyup', refs.handle.keyup);
   window.removeEventListener('resize', refs.handle.resize);
 }
 
 export default function bindWindowEvents(refs) {
+  refs.cleanup.push(() => cleanup(refs));
+
   const { handle } = Object.assign(refs, { handle: refs.handle || {} });
 
   handle.keyup = e => handleKeyPress(e, refs.store.dispatch);
@@ -27,6 +25,4 @@ export default function bindWindowEvents(refs) {
 
   handle.resize = throttle(() => refs.store.dispatch(resize()), 100);
   window.addEventListener('resize', handle.resize);
-
-  refs.store.subscribe(() => handleStoreChange(refs));
 }

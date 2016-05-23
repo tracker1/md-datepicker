@@ -11,10 +11,10 @@ export default function initialize(options, callback, type) {
   let refs;
   try {
     ++instance;
-    refs = { callback, instance };
+    refs = { callback, instance, cleanup: [] };
     refs.store = createStoreInstance(options, type);
     refs.container = createContainer(refs);
-    refs.cancel = () => cleanup(this, () => callback(null, null));
+    refs.cancel = () => cleanup(refs, () => callback(null, null));
     bindWindowEvents(refs);
     bindStoreCallback(refs);
     refs.component = renderComponent(refs);

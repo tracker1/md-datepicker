@@ -1,7 +1,28 @@
 // import { getStyles } from '../style';
 import getScrollbarWidth from 'lib/get-scrollbar-width';
 
+export function cleanup(refs) {
+  if (refs.documentElement) {
+    document.documentElement.style.overflow = refs.documentElement.overflow || '';
+    document.documentElement.style.paddingRight = refs.documentElement.paddingRight || '';
+  }
+  if (refs.component) ReactDOM.render('', refs.container, refs.component);
+  setTimeout(() => {
+    // remove instance
+    if (refs.container) refs.container.parentNode.removeChild(refs.container);
+
+    // remove outer context
+    const outerContainer = document.getElementById('DatePickerModal');
+    if (outerContainer) {
+      const components = outerContainer.querySelectorAll('.dpm-container');
+      if (!components.length) outerContainer.parentNode.removeChild(outerContainer);
+    }
+  }, 100);
+}
+
 export default function createContainer(refs) {
+  refs.cleanup.push(() => cleanup(refs));
+
   let outerContainer = document.getElementById('DatePickerModal');
   if (!outerContainer) {
     outerContainer = document.createElement('div');
@@ -33,5 +54,6 @@ export default function createContainer(refs) {
   container.id = `date-picker-modal-${refs.instance}`;
   container.className = 'dpm-container';
   outerContainer.appendChild(container);
+
   return container;
 }
