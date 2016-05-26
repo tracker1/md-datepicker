@@ -14,5 +14,5 @@ export default function renderMonths(props) {
     m.setMonth(m.getMonth() + 1);
     ret.push(<Month month={D.clone(m)} {...props} />);
   }
-  return <div className="months">{ret}</div>;
+  return <div className="dpm-months">{ret}</div>;
 }

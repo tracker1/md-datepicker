@@ -1,7 +1,9 @@
-.choose-date {
-  display: inline-block;
-  position: relative;
-  
-  @import 'style-heading';
-  @import 'style-months';
+#DatePickerModal {
+  .choose-date {
+    display: inline-block;
+    position: relative;
+  }
 }
+
+@import 'style-heading';
+@import 'style-months';

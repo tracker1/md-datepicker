@@ -1,81 +1,89 @@
-> .months {
-  white-space: nowrap;
-  text-align: center;
-  
-  .month {
-    margin: 10px 0 10px 0;
-    
-    width: 280px;
-    display: inline-block;
-    position: relative;
-    text-align: left;
-    vertical-align: top;
-    
-    //border: 1px solid rgba(0,0,0,0.15);
-    
-    > table {
-      vertical-align: top;
-      margin: auto;
-      border-collapse: collapse;
-      
-      th, td {
-        border:0;
-        width: 2em;
-        height: 2em;
-        text-align: center;
-        vertical-align: middle;
-        overflow: visible;
-        line-height: 1em;
+#DatePickerModal {
+
+  .choose-date {
+
+    > .dpm-months {
+      white-space: nowrap;
+      text-align: center;
+
+      .dpm-month {
+        margin: 10px 0 10px 0;
+
+        width: 280px;
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        vertical-align: top;
+
+        //border: 1px solid rgba(0,0,0,0.15);
+
+        > table {
+          vertical-align: top;
+          margin: auto;
+          border-collapse: collapse;
+
+          th, td {
+            border:0;
+            width: 2em;
+            height: 2em;
+            text-align: center;
+            vertical-align: middle;
+            overflow: visible;
+            line-height: 1em;
+          }
+
+        } // > table
+      } // .month
+    } // > .months
+  } // .choose-date
+
+  .dpm-date {
+    > button {
+      transition: all 0.3s ease-in;
+      margin: 0;
+      border: 1px solid transparent;
+      background: transparent;
+      box-shadow: none;
+
+      position:relative;
+      width: 2.2em;
+      height: 2.2em;
+      border-radius: 50%;
+      top: -0.1em;
+      left: -0.1em;
+
+      &.dpm-selected {
+        background-color: rgba(2, 136, 209, 0.8);
       }
-      
-      td > button {
-        transition: all 0.3s ease-in;
-        margin: 0;
-        border: 1px solid transparent;
-        background: transparent;
-        box-shadow: none;
-        
-        position:relative;
-        width: 2.2em;
-        height: 2.2em;
-        border-radius: 50%;
-        top: -0.1em;
-        left: -0.1em;
-        
-        &.selected {
-          background-color: rgba(2, 136, 209, 0.8) !important;
+
+      &.dpm-oob {
+        color: #999;
+
+        &.dpm-selected {
+          background-color: rgba(2, 136, 209, 0.2);
         }
-        
-        &.oob {
-          color: #999;
-          
-          &.selected {
-            background-color: rgba(2, 136, 209, 0.2) !important;
+      }
+
+      &:disabled {
+        color: #cccccf;
+      }
+
+      &:hover {
+        font-weight: bold;
+        background-color: rgba(2, 136, 209, 0.4);
+        cursor: pointer;
+
+        &:disabled {
+          font-weight: normal;
+          background-color: transparent;
+          cursor: not-allowed;
+
+          &.dpm-selected {
+            background-color: rgba(2, 136, 209, 0.2);
           }
         }
-        
-        &:disabled, &.disabled {
-          color: #cccccf;
-        }
-        
-        &:hover {
-          font-weight: bold;
-          background-color: rgba(2, 136, 209, 0.4);
-          cursor: pointer;
-          
-          &:disabled, &.disabled {
-            font-weight: normal;
-            background-color: transparent;
-            cursor: not-allowed;
-            
-            &.selected {
-              background-color: rgba(2, 136, 209, 0.2) !important;
-            }
-          }
-        }
-        
-      }
-    }
-  }
-  
-}
+      } // &:hover
+    } // > td > button
+  } // .dpm-date
+
+} // #DatePickerModal

@@ -1,38 +1,52 @@
 import * as D from 'lib/dateutils';
 
 export function dateCell(config, actions, dtm, m, selected) {
-  if (config.monthsToShow > 1 && dtm.getMonth() !== m.getMonth()) return '';
+  if (config.monthsToShow > 1 && dtm.getMonth() !== m.getMonth()) {
+    return <td className='dpm-date'></td>;
+  }
 
+  let tdClasses = ['dpm-date'];
   const classes = [];
-  const checked = config.checkDate(D.clone(dtm));
+  const checked = config.checkDate(D.clone(dtm), config.value && D.clone(config.value) || null);
 
-  if (+selected === +dtm) classes.push('selected');
+  if (+selected === +dtm) classes.push('dpm-selected');
 
-  if (typeof checked === 'string') classes.push(checked);
+  if (typeof checked === 'string') {
+    tdClasses.push(checked);
+  }
+  if (checked && checked.className) {
+    tdClasses = tdClasses.concat(checked.className);
+  }
+  if (checked && checked.classes && checked.classes.length) {
+    tdClasses = tdClasses.concat(checked.classes);
+  }
 
   const disabled = (
     dtm < config.min
     || dtm >= config.max
     || !checked
+    || (checked && checked.disabled)
   );
 
-  if (disabled) {
-    classes.push('disabled');
-  } else {
-    classes.push((dtm.getMonth() !== m.getMonth()) ? 'oob' : 'active');
+  if (!disabled) {
+    classes.push((dtm.getMonth() !== m.getMonth()) ? 'dpm-oob' : 'dpm-active');
   }
 
-  return <button
-    className={classes.join(' ')}
-    disabled={disabled}
-    onClick={event => {
-      event.stopImmediatePropagation();
-      if (disabled) return;
-      actions.resolve(dtm);
-    }}
+  return <td
+     className={tdClasses.join(' ')}
   >
-    {dtm.getDate()}
-  </button>;
+    <button
+      className={classes.join(' ')}
+      disabled={disabled}
+      onClick={event => {
+        event.stopImmediatePropagation();
+        if (disabled) return;
+        actions.resolve(dtm);
+      }}
+    >
+      {dtm.getDate()}
+    </button>
+  </td>;
 }
 
 function getDaysOfWeek(days, startOfWeek) {
@@ -69,9 +83,7 @@ export default function renderMonth(props) {
       stack = [];
     }
     stack.push(
-      <td>
-        { dateCell(config, actions, D.clone(dtm), D.clone(month), selected) }
-      </td>
+      dateCell(config, actions, D.clone(dtm), D.clone(month), selected)
     );
     dtm.setDate(dtm.getDate() + 1);
   }
@@ -79,10 +91,10 @@ export default function renderMonth(props) {
   if (stack.length) rows.push(<tr>{stack}</tr>);
   if (rows.length < 6) rows.push(<tr><td><button disabled="true" /></td></tr>);
 
-  return <div className='month'>
+  return <div className='dpm-month'>
     <table>
       <thead>
-        <tr class='dow'>
+        <tr class='dpm-dow'>
           {getDaysOfWeek(l.days, config.startOfWeek)}
         </tr>
       </thead>

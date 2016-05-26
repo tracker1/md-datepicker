@@ -1,86 +1,92 @@
-.heading {
-  background-color: #0288d1;
-  color: #eee;
-  cursor: pointer;
-  white-space: nowrap;
+#DatePickerModal {
 
-  .year {
-    white-space: nowrap;
+  .choose-date {
 
-    .item, .full {
-      width: 100%;
-      display: block;
-      background-color: transparent;
-      border-style: none;
-      border-width: 0;
-      font-size: 24px;
-      line-height: 1em;
-      padding: 0.5em 0 0.1em 0;
-      text-align: center;
-    }
+    .heading {
+      background-color: #0288d1;
+      color: #eee;
+      cursor: pointer;
+      white-space: nowrap;
 
-    .item {
-      display: inline-block;
-      position: relative;
-      width: 280px;
-    }
-  }
+      .year {
+        white-space: nowrap;
 
-  .months {
-    white-space: no-wrap;
+        .item, .full {
+          width: 100%;
+          display: block;
+          background-color: transparent;
+          border-style: none;
+          border-width: 0;
+          font-size: 24px;
+          line-height: 1em;
+          padding: 0.5em 0 0.1em 0;
+          text-align: center;
+        }
 
-    .month {
-      display: inline-block;
-      position: relative;
-      width: 280px;
-      height: 2.4em;
-
-      .prev, .next {
-        z-index: 2;
-        margin:0;
-        border: 0;
-        border-width: 0;
-        padding: 0;
-        background: transparent;
-        display: block;
-        font-size: 20px;
-        float: left;
-        width: 40px;
-        height: 40px;
-        padding-top: 2px;
-        line-height: 1em;
-        text-align: center;
-        cursor: pointer;
-
-        &:disabled, &.disabled {
-          cursor: not-allowed;
-          color: rgba(255,255,255,0.5);
+        .item {
+          display: inline-block;
+          position: relative;
+          width: 280px;
         }
       }
 
-      .next {
-        float: right;
-      }
+      .months {
+        white-space: no-wrap;
 
-      .text {
-        z-index: 1;
-        font-size: 20px;
-        line-height: 1em;
-        display: block;
-        position: absolute;
-        width: 200px;
-        height: 100%;
-        top: 0;
-        left: 40px;
-        margin: 0;
-        border: 0;
-        border-width: 0;
-        padding: 0;
-        background: transparent;
-        bottom: 0;
-        text-align: center;
-        cursor: pointer;
+        .month {
+          display: inline-block;
+          position: relative;
+          width: 280px;
+          height: 2.4em;
+
+          .prev, .next {
+            z-index: 2;
+            margin:0;
+            border: 0;
+            border-width: 0;
+            padding: 0;
+            background: transparent;
+            display: block;
+            font-size: 20px;
+            float: left;
+            width: 40px;
+            height: 40px;
+            padding-top: 2px;
+            line-height: 1em;
+            text-align: center;
+            cursor: pointer;
+
+            &:disabled, &.disabled {
+              cursor: not-allowed;
+              color: rgba(255,255,255,0.5);
+            }
+          }
+
+          .next {
+            float: right;
+          }
+
+          .text {
+            z-index: 1;
+            font-size: 20px;
+            line-height: 1em;
+            display: block;
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            top: 0;
+            left: 40px;
+            margin: 0;
+            border: 0;
+            border-width: 0;
+            padding: 0;
+            background: transparent;
+            bottom: 0;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
       }
-    }
-  }
-}
+    } // .heading
+  } // .choose-date
+} // #DatePickerModal

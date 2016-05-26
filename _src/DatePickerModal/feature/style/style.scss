@@ -5,23 +5,21 @@ $brand-primary: #0288d1;
 @import "variables";
 @import "mixins";
 
+@import "reset";
+//@import "bootstrap/scss/normalize";
+//@import "bootstrap/scss/reboot";
+//@import "bootstrap/scss/type";
+
 #DatePickerModal {
-
-  @import "reset";
-  //@import "bootstrap/scss/normalize";
-  //@import "bootstrap/scss/reboot";
-  //@import "bootstrap/scss/type";
-
   @media print {
     display: none !important;
   }
 
-  @import "picker";
-  @import "../main/style.scss";
-  @import "../choose-date/style.scss";
-
   button {
     outline: none !important;
   }
-
 }
+
+@import "picker";
+@import "../main/style.scss";
+@import "../choose-date/style.scss";
