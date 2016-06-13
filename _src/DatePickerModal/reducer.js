@@ -64,7 +64,7 @@ export default function reducer(state = EMPTY, action) {
     case 'ADVANCE_CURRENT_MONTH':
       min = D.minMonth(state.min);
       max = D.maxMonth(state.max);
-      max.setMonth(max.getMonth() - state.monthsToShow);
+      max.setMonth(max.getMonth() - state.current.months + 1);
       dtm = new Date(state.current.year, state.current.month + action.payload, 1);
 
       // don't advance if out of range
